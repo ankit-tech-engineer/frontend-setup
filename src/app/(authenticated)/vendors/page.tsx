@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Plus, Edit, Trash2, Users, Search, Loader2, Mail, Phone, ShieldCheck, ShieldAlert, BadgeCheck } from 'lucide-react';
+import { Plus, Edit, Trash2, Users, Search, Loader2, Mail, Phone, ShieldCheck, ShieldAlert, CreditCard } from 'lucide-react';
 import { getVendors, deleteVendor, activateLogin, deactivateLogin, Vendor } from '@/core/api/vendors';
 import { Button, Input, Pagination } from '@/components/ui';
 import { Modal } from '@/components/ui/Modal';
 import { Popconfirm } from '@/components/ui/Popconfirm';
 import { VendorForm } from './components/VendorForm';
+import { ManualSubscriptionForm } from './components/ManualSubscriptionForm';
 import { cn } from '@/lib/utils';
 import { useDebounce } from '@/core/hooks/useDebounce';
 
@@ -16,6 +17,7 @@ export default function VendorsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubscriptionModalOpen, setIsSubscriptionModalOpen] = useState(false);
   const [selectedVendor, setSelectedVendor] = useState<Vendor | null>(null);
   const [isDeleting, setIsDeleting] = useState<number | null>(null);
   const [isTogglingLogin, setIsTogglingLogin] = useState<number | null>(null);
@@ -96,6 +98,11 @@ export default function VendorsPage() {
   const handleAdd = () => {
     setSelectedVendor(null);
     setIsModalOpen(true);
+  };
+
+  const handleManualSubscription = (vendor: Vendor) => {
+    setSelectedVendor(vendor);
+    setIsSubscriptionModalOpen(true);
   };
 
   return (
@@ -233,6 +240,14 @@ export default function VendorsPage() {
                           </Popconfirm>
 
                           <button 
+                            onClick={() => handleManualSubscription(vendor)}
+                            className="p-2 text-muted-foreground hover:bg-white dark:hover:bg-indigo-950/30 hover:text-indigo-600 hover:shadow-sm rounded-xl transition-all"
+                            title="Assign Subscription"
+                          >
+                            <CreditCard className="h-4 w-4" />
+                          </button>
+
+                          <button 
                             onClick={() => handleEdit(vendor)}
                             className="p-2 text-muted-foreground hover:bg-white dark:hover:bg-indigo-950/30 hover:text-indigo-600 hover:shadow-sm rounded-xl transition-all"
                             title="Edit Profile"
@@ -305,6 +320,25 @@ export default function VendorsPage() {
           }}
           onCancel={() => setIsModalOpen(false)}
         />
+      </Modal>
+
+      {/* Subscription Modal */}
+      <Modal
+        isOpen={isSubscriptionModalOpen}
+        onClose={() => setIsSubscriptionModalOpen(false)}
+        title="Command: Manual Provisioning"
+      >
+        {selectedVendor && (
+          <ManualSubscriptionForm 
+            vendorId={selectedVendor.id}
+            vendorName={selectedVendor.name}
+            onSuccess={() => {
+              setIsSubscriptionModalOpen(false);
+              fetchVendors();
+            }}
+            onCancel={() => setIsSubscriptionModalOpen(false)}
+          />
+        )}
       </Modal>
     </div>
   );
