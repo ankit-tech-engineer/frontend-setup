@@ -28,7 +28,7 @@ export default function SuperAdminDashboard() {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Super Admin Dashboard</h1>
-          <Button onClick={handleLogout} variant="destructive" className="bg-red-600 hover:bg-red-700">Logout</Button>
+          <Button onClick={handleLogout} variant="danger" className="bg-red-600 hover:bg-red-700">Logout</Button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow border border-slate-200 dark:border-slate-700">
