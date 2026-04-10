@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Plus, Edit, Trash2, UserCog, Search, Loader2, Mail, Shield, UserCheck, UserX, Fingerprint } from 'lucide-react';
-import { getUsers, deleteUser, activateUser, deactivateUser, User } from '@/core/api/users';
+import { getUsers, deleteUser, activateUser, deactivateUser, User } from '@/core/api/auth/users';
 import { Button, Input, Pagination } from '@/components/ui';
 import { Modal } from '@/components/ui/Modal';
 import { Popconfirm } from '@/components/ui/Popconfirm';

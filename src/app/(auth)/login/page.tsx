@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { login } from '@/core/api/auth';
+import { login } from '@/core/api/auth/auth';
 import { setAuthCookies } from '@/core/utils/cookies';
 import { useAuthStore } from '@/core/store/useAuthStore';
 import { Button, Input, Label } from '@/components/ui';

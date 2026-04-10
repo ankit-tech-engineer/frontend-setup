@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button, Label } from '@/components/ui';
-import { createResourceActionMapping, updateResourceActionMapping, ResourceActionMapping } from '@/core/api/resource-action-mappings';
-import { getResources, Resource } from '@/core/api/resources';
-import { getActions, Action } from '@/core/api/actions';
+import { createResourceActionMapping, updateResourceActionMapping, ResourceActionMapping } from '@/core/api/acl/resource-action-mappings';
+import { getResources, Resource } from '@/core/api/acl/resources';
+import { getActions, Action } from '@/core/api/acl/actions';
 import { Loader2, CheckCircle2, Circle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 

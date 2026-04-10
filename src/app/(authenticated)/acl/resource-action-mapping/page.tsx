@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Plus, Edit, Trash2, Layers, Search, Loader2, ShieldCheck, ChevronRight } from 'lucide-react';
-import { getResourceActionMappings, deleteResourceActionMapping, ResourceActionMapping } from '@/core/api/resource-action-mappings';
+import { getResourceActionMappings, deleteResourceActionMapping, ResourceActionMapping } from '@/core/api/acl/resource-action-mappings';
 import { Button, Input, Pagination } from '@/components/ui';
 import { Modal } from '@/components/ui/Modal';
 import { Popconfirm } from '@/components/ui/Popconfirm';

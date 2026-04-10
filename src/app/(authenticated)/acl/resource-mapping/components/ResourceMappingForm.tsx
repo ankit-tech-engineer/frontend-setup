@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Button, Input } from '@/components/ui';
-import { getResources, Resource } from '@/core/api/resources';
-import { createResourceMapping, updateResourceMapping } from '@/core/api/resource-mapping';
+import { getResources, Resource } from '@/core/api/acl/resources';
+import { createResourceMapping, updateResourceMapping } from '@/core/api/acl/resource-mapping';
 import { Loader2, Search, Check, Box, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useDebounce } from '@/core/hooks/useDebounce';
 
 interface ResourceMappingFormProps {
   mapping?: any;
@@ -25,21 +26,35 @@ export const ResourceMappingForm: React.FC<ResourceMappingFormProps> = ({
   });
 
   const [availableResources, setAvailableResources] = useState<Resource[]>([]);
+  const [knownResources, setKnownResources] = useState<Resource[]>([]);
   const [isLoadingResources, setIsLoadingResources] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
+
   const fetchResources = useCallback(async (query: string) => {
     setIsLoadingResources(true);
     try {
-      const response = await getResources();
-      const filtered = response.data.filter(r => 
-        r.name.toLowerCase().includes(query.toLowerCase()) || 
-        r.key.toLowerCase().includes(query.toLowerCase())
-      );
-      setAvailableResources(filtered);
+      const params = query ? {
+        filter: {
+          $or: [
+            { name: { $regex: query, $options: 'i' } },
+            { key: { $regex: query, $options: 'i' } }
+          ]
+        }
+      } : {};
+      const response = await getResources(params);
+      setAvailableResources(response.data);
+      
+      // Update known resources to keep labels for selected items
+      setKnownResources(prev => {
+        const existingIds = new Set(prev.map(r => r.id));
+        const newResources = response.data.filter(r => !existingIds.has(r.id));
+        return [...prev, ...newResources];
+      });
     } catch (error) {
       console.error('Failed to fetch resources:', error);
     } finally {
@@ -47,13 +62,18 @@ export const ResourceMappingForm: React.FC<ResourceMappingFormProps> = ({
     }
   }, []);
 
-  // Debounced search
+  // Fetch initial resources and mapping's existing resources
   useEffect(() => {
-    const timer = setTimeout(() => {
-      fetchResources(searchQuery);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [searchQuery, fetchResources]);
+    fetchResources('');
+  }, [fetchResources]);
+
+  // Handle debounced search
+  useEffect(() => {
+    if (debouncedSearchQuery !== undefined) {
+      fetchResources(debouncedSearchQuery);
+    }
+  }, [debouncedSearchQuery, fetchResources]);
+
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -99,7 +119,7 @@ export const ResourceMappingForm: React.FC<ResourceMappingFormProps> = ({
     }));
   };
 
-  const selectedResourceNames = availableResources
+  const selectedResourceNames = knownResources
     .filter(r => formData.resources.includes(r.id))
     .map(r => r.name);
 

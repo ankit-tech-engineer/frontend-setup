@@ -1,5 +1,5 @@
-import axiosInstance from './axiosInstance';
-import { QueryParams } from './types';
+import axiosInstance from '../axiosInstance';
+import { QueryParams } from '../types';
 
 export interface Vendor {
   _id: string;

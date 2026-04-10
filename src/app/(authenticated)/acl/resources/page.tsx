@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Plus, Edit, Trash2, Box, Search, Loader2 } from 'lucide-react';
-import { getResources, deleteResource, Resource } from '@/core/api/resources';
+import { getResources, deleteResource, Resource } from '@/core/api/acl/resources';
 import { Button, Input, Pagination } from '@/components/ui';
 import { Modal } from '@/components/ui/Modal';
 import { Popconfirm } from '@/components/ui/Popconfirm';

@@ -5,7 +5,7 @@ import {
   getResourceMappings, 
   deleteResourceMapping, 
   ResourceMapping 
-} from '@/core/api/resource-mapping';
+} from '@/core/api/acl/resource-mapping';
 import { Button, Input, Pagination } from '@/components/ui';
 import { Modal } from '@/components/ui/Modal';
 import { Popconfirm } from '@/components/ui/Popconfirm';

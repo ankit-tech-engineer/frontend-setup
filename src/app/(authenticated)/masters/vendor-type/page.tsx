@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Plus, Edit, Trash2, LayoutGrid, Search, Loader2, Tag } from 'lucide-react';
-import { getVendorTypes, deleteVendorType, VendorType } from '@/core/api/vendor-types';
+import { getVendorTypes, deleteVendorType, VendorType } from '@/core/api/vendor/vendor-types';
 import { Button, Input, Pagination } from '@/components/ui';
 import { Modal } from '@/components/ui/Modal';
 import { Popconfirm } from '@/components/ui/Popconfirm';

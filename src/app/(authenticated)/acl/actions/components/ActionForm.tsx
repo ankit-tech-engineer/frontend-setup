@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button, Input, Label } from '@/components/ui';
-import { createAction, updateAction, Action } from '@/core/api/actions';
+import { createAction, updateAction, Action } from '@/core/api/acl/actions';
 import { cn } from '@/lib/utils';
 
 interface ActionFormProps {

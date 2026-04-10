@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Shield, ChevronRight, Check, Loader2, Save, Settings2, Box, Command, Zap, Layers, Activity } from 'lucide-react';
-import { getRoles, Role } from '@/core/api/roles';
-import { getResourceMappings, ResourceMapping } from '@/core/api/resource-mapping';
-import { getPermissions, updatePermissions, PermissionItem } from '@/core/api/permissions';
-import { getResourceActionMappings, ResourceActionMapping } from '@/core/api/resource-action-mappings';
+import { getRoles, Role } from '@/core/api/acl/roles';
+import { getResourceMappings, ResourceMapping } from '@/core/api/acl/resource-mapping';
+import { getPermissions, updatePermissions, PermissionItem } from '@/core/api/acl/permissions';
+import { getResourceActionMappings, ResourceActionMapping } from '@/core/api/acl/resource-action-mappings';
 import { Button } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';

@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button, Input, Label } from '@/components/ui';
-import { createVendor, updateVendor, Vendor } from '@/core/api/vendors';
-import { getVendorTypes, VendorType } from '@/core/api/vendor-types';
+import { createVendor, updateVendor, Vendor } from '@/core/api/vendor/vendors';
+import { getVendorTypes, VendorType } from '@/core/api/vendor/vendor-types';
 import { Loader2 } from 'lucide-react';
 
 interface VendorFormProps {

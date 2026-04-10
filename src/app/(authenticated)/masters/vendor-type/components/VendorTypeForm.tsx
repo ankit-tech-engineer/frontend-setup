@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button, Input, Label } from '@/components/ui';
-import { createVendorType, updateVendorType, VendorType } from '@/core/api/vendor-types';
+import { createVendorType, updateVendorType, VendorType } from '@/core/api/vendor/vendor-types';
 
 interface VendorTypeFormProps {
   vendorType?: VendorType | null;

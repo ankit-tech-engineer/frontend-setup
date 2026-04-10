@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button, Input, Label } from '@/components/ui';
-import { createUser, updateUser, User } from '@/core/api/users';
-import { getRoles, Role } from '@/core/api/roles';
+import { createUser, updateUser, User } from '@/core/api/auth/users';
+import { getRoles, Role } from '@/core/api/acl/roles';
 import { Loader2, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 

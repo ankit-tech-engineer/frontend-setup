@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button, Input, Label } from '@/components/ui';
-import { createRole, updateRole, Role } from '@/core/api/roles';
+import { createRole, updateRole, Role } from '@/core/api/acl/roles';
 
 interface RoleFormProps {
   role?: Role | null;

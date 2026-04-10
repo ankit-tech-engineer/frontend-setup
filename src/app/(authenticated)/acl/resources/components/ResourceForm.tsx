@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button, Input, Label } from '@/components/ui';
-import { createResource, updateResource, Resource } from '@/core/api/resources';
+import { createResource, updateResource, Resource } from '@/core/api/acl/resources';
 import { cn } from '@/lib/utils';
 
 interface ResourceFormProps {

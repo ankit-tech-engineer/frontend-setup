@@ -4,7 +4,7 @@ import { useAuthStore } from '@/core/store/useAuthStore';
 import { clearAuthCookies } from '@/core/utils/cookies';
 import { Button } from '@/components/ui';
 import { useRouter } from 'next/navigation';
-import { logout as apiLogout } from '@/core/api/auth';
+import { logout as apiLogout } from '@/core/api/auth/auth';
 
 export default function SuperAdminDashboard() {
   const user = useAuthStore((state) => state.user);

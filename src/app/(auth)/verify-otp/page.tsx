@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { verifyOtp, resendOtp } from '@/core/api/auth';
+import { verifyOtp, resendOtp } from '@/core/api/auth/auth';
 import { Button, Input, Label } from '@/components/ui';
 
 function VerifyOtpContent() {

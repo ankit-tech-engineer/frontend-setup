@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Plus, Edit, Trash2, ShieldCheck, Search, Loader2 } from 'lucide-react';
-import { getRoles, deleteRole, Role } from '@/core/api/roles';
+import { getRoles, deleteRole, Role } from '@/core/api/acl/roles';
 import { Button, Input, Pagination } from '@/components/ui';
 import { Modal } from '@/components/ui/Modal';
 import { Popconfirm } from '@/components/ui/Popconfirm';

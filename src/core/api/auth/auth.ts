@@ -1,4 +1,4 @@
-import axiosInstance from './axiosInstance';
+import axiosInstance from '../axiosInstance';
 
 export const register = async (data: { name: string; email: string; vendorName: string; phone: string }) => {
   const response = await axiosInstance.post('/auth/register', data);

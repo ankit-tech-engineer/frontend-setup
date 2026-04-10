@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Plus, Edit, Trash2, Users, Search, Loader2, Mail, Phone, ShieldCheck, ShieldAlert, CreditCard } from 'lucide-react';
-import { getVendors, deleteVendor, activateLogin, deactivateLogin, Vendor } from '@/core/api/vendors';
+import { getVendors, deleteVendor, activateLogin, deactivateLogin, Vendor } from '@/core/api/vendor/vendors';
 import { Button, Input, Pagination } from '@/components/ui';
 import { Modal } from '@/components/ui/Modal';
 import { Popconfirm } from '@/components/ui/Popconfirm';

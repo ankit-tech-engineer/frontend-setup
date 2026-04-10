@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { register } from '@/core/api/auth';
+import { register } from '@/core/api/auth/auth';
 import { Button, Input, Label } from '@/components/ui';
 
 export default function RegisterPage() {
