@@ -1,6 +1,6 @@
 import axiosInstance from '../axiosInstance';
 import { QueryParams } from '../types';
-import { Role } from './roles';
+import { Role } from '../acl/roles';
 
 export interface User {
   _id: string;
