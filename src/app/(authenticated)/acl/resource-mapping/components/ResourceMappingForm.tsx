@@ -127,7 +127,7 @@ export const ResourceMappingForm: React.FC<ResourceMappingFormProps> = ({
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Module Name */}
       <div className="space-y-2">
-        <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-1">
+        <label className="text-[10px] font-bold tracking-widest text-muted-foreground ml-1">
           Module Designation
         </label>
         <Input
@@ -141,7 +141,7 @@ export const ResourceMappingForm: React.FC<ResourceMappingFormProps> = ({
 
       {/* Resource Selection Dropdown */}
       <div className="space-y-2 relative" ref={dropdownRef}>
-        <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-1">
+        <label className="text-[10px] font-bold tracking-widest text-muted-foreground ml-1">
           Resource Registry Mapping
         </label>
         
@@ -218,7 +218,7 @@ export const ResourceMappingForm: React.FC<ResourceMappingFormProps> = ({
                       )}>
                         {res.name}
                       </span>
-                      <span className="text-[9px] font-medium text-muted-foreground uppercase tracking-tight truncate">
+                      <span className="text-[9px] font-medium text-muted-foreground tracking-tight truncate">
                         {res.key}
                       </span>
                     </div>
@@ -237,7 +237,7 @@ export const ResourceMappingForm: React.FC<ResourceMappingFormProps> = ({
 
       {/* Status Selection */}
       <div className="space-y-2 pt-2">
-        <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-1">
+        <label className="text-[10px] font-bold tracking-widest text-muted-foreground ml-1">
           Lifecycle Status
         </label>
         <div className="grid grid-cols-2 gap-3">
@@ -247,7 +247,7 @@ export const ResourceMappingForm: React.FC<ResourceMappingFormProps> = ({
               type="button"
               onClick={() => setFormData({ ...formData, status: status as any })}
               className={cn(
-                "h-11 rounded-xl flex items-center justify-center gap-2 border text-[10px] font-bold uppercase tracking-wider transition-all",
+                "h-11 rounded-xl flex items-center justify-center gap-2 border text-[10px] font-bold tracking-wider transition-all",
                 formData.status === status
                   ? status === 'active'
                     ? "bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400 shadow-sm"
@@ -272,14 +272,14 @@ export const ResourceMappingForm: React.FC<ResourceMappingFormProps> = ({
           type="button"
           variant="outline"
           onClick={onCancel}
-          className="flex-1 h-12 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-muted"
+          className="flex-1 h-12 rounded-xl text-[10px] font-bold tracking-widest hover:bg-muted"
         >
           Cancel
         </Button>
         <Button
           type="submit"
           disabled={isSubmitting || !formData.module_name || formData.resources.length === 0}
-          className="flex-1 h-12 rounded-xl bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-widest hover:scale-[1.02] transition-all shadow-lg shadow-indigo-100 dark:shadow-none"
+          className="flex-1 h-12 rounded-xl bg-indigo-600 text-white text-[10px] font-bold tracking-widest hover:scale-[1.02] transition-all shadow-lg shadow-indigo-100 dark:shadow-none"
         >
           {isSubmitting ? <Loader2 className="h-3 w-3 animate-spin mr-2" /> : null}
           {mapping ? 'Modify' : 'Register'}
